@@ -74,4 +74,4 @@ To run this game you will need a MIPS Assembler and Runtime Simulator. This guid
 </ol>
 
 ## Known Issues
-There is currently a known issue with version 4.5 of MARS (the latest as of writing) where the entire application freezes due to a threading issue - a deadlock caused by a function call. For a more detailed explanation along with a suggested fix, please [visit this article](https://dtconfect.wordpress.com/2013/02/09/mars-mips-simulator-lockup-hackfix/) by [dtConfect](https://github.com/dtConfect).
+There is currently a known issue with version 4.5 of MARS (the latest as of writing) where the entire application freezes due to a threading issue - a deadlock caused by a function called when handling the simulated keyboard input. For a more detailed explanation along with a suggested fix, please [visit this article](https://dtconfect.wordpress.com/2013/02/09/mars-mips-simulator-lockup-hackfix/) by [dtConfect](https://github.com/dtConfect).
