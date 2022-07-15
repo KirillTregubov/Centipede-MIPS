@@ -6,7 +6,7 @@
 # Student: Kirill Tregubov
 #
 # This project is a modified version of the popular 1980 Atari game Centipede
-# using MIPS assembly.
+# built in MIPS assembly.
 #
 # Bitmap Display Configuration:
 # - Unit width in pixels: 8
