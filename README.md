@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://github.com/KirillTregubov/centipede">
+  <a href="https://github.com/KirillTregubov/Centipede">
     <img src="images/centipede.png" alt="Screenshot of the Centipede game" width="384" height="384">
   </a>
   <h3 align="center">CSC258 Winter 2021 Assembly Centipede Game</h3>
@@ -7,7 +7,7 @@
   <p align="center">
     A modified version of the popular 1980 Atari game Centipede built in MIPS assembly.
     <br />
-    <a href="https://github.com/KirillTregubov/centipede/issues">Report a Bug</a>
+    <a href="https://github.com/KirillTregubov/Centipede/issues">Report a Bug</a>
   </p>
 </div>
 
