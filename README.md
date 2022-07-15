@@ -5,7 +5,7 @@
   <h3 align="center">CSC258 Winter 2021 Assembly Centipede Game</h3>
 
   <p align="center">
-    A modified version of the popular 1980 Atari game Centipede using MIPS assembly.
+    A modified version of the popular 1980 Atari game Centipede built in MIPS assembly.
     <br />
     <a href="https://github.com/KirillTregubov/centipede/issues">Report a Bug</a>
   </p>
