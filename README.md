@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/KirillTregubov/centipede">
-    <img src="https://user-images.githubusercontent.com/31662934/179275707-879bd278-39f1-487c-8139-a1ca11f5ff9a.png" alt="Screenshot of the Centipede game" width="384" height="384">
+    <img src="images/centipede.png" alt="Screenshot of the Centipede game" width="384" height="384">
   </a>
   <h3 align="center">CSC258 Winter 2021 Assembly Centipede Game</h3>
 
@@ -30,8 +30,8 @@ To run this game you will need a MIPS Assembler and Runtime Simulator. This guid
 3. Set up the keyboard by clicking on **Tools** in the menu bar and selecting **Keyboard and Display MMIO Simulator**.
    - Click the **Connect to MIPS** button.
    - When playing the game, make sure the bottom **KEYBOARD** input field is focused and reflecting your inputs.
-4. Assemble the program by clicking on **Run** in the menu bar and selecting **Assemble**, or by clicking <img width="30" alt="the wrench and screwdriver button" src="https://user-images.githubusercontent.com/31662934/179269667-8d65be76-2a39-4ae9-b2f3-6854c4603c20.png"> in the tool bar.
-5. Start the game by clicking on **Run** in the menu bar and selecting **Go**, or by clicking <img width="30" alt="the play button" src="https://user-images.githubusercontent.com/31662934/179270236-6963f77f-38a8-4242-a14e-36e0753a42e3.png"> in the tool bar.
+4. Assemble the program by clicking on **Run** in the menu bar and selecting **Assemble**, or by clicking <img width="30" alt="the wrench and screwdriver button" src="images/assemble.png"> in the tool bar.
+5. Start the game by clicking on **Run** in the menu bar and selecting **Go**, or by clicking <img width="30" alt="the play button" src="images/go.png"> in the tool bar.
 
 ## Controls
 - `j` - move left
