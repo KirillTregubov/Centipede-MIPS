@@ -1,0 +1,155 @@
+displayAddress: starting index of display
+$v0 return var (use for syscalls)
+$v1 return var 2
+
+== store variables in s# ==
+s0: lives
+s1: dartData
+s2: bugBlasterPosition
+s3: centipedeLives
+s4: centipedeDirection
+s5: playerScore
+s6: fleaData
+
+direction constants: 0 North, 1 East, 2 South, 3 West
+
+			
+
+# Get Centipedes
+get_centipedes:
+	# save caller
+	addi $sp, $sp, -4
+	sw $ra, 0($sp)
+	
+	move $t0, $zero
+	sll $t1, $t0, 2
+	add $t2, $s3, $t1
+	
+empty_loop:
+	lw $t3, 0($t2)
+	beq $t3, $zero, empty_end
+	addi $t0, $t0, 1
+	sll $t1, $t0, 2
+	add $t2, $s3, $t1
+	
+	j empty_loop
+empty_end:
+	move $v0, $t0
+	
+	# return to caller
+	lw $ra, 0($sp)
+	addi $sp, $sp, 4
+	jr $ra
+
+
+
+# MAIN TESTING
+	#move $s0, $zero
+	#li $s1, 56
+#test_loop:
+	#beq $s0, $s1, test_end
+	#jal delay
+	#jal handle_centipede
+	#addi $s0, $s0, 1
+	#j test_loop
+#test_end:
+	#lw $s0, screenWidth
+	#lw $s1, screenHeight
+	
+	# Testing
+	
+	#move $t6, $s6
+	#lw $t8, mushroomAmount
+	#move $t9, $zero		# i = 0
+#test_loop:
+	#beq $t9, $t8, test_end
+	#sll $t7, $t9, 2		# $t7 = i * 4 = offset
+	#add $t7, $t6, $t7	# $t7 = addr(A) + i*4 = addr(A[i])
+	
+	#lw $a0, 0($t7)
+	#li $v0,1
+	#syscall
+	#li $v0,4
+	#la $a0,newLine
+	#syscall 
+	
+	#addi $t9, $t9, 1
+	#j test_loop
+#test_end:
+
+
+
+# ALLOCATE MEMORY
+# read n from console
+li $v0 5
+syscall
+move $t0 $v0
+
+# allocate dynamic memory
+sll $a0 $v0 2    # sll performs $a0 = $v0 x 2^2
+li $v0 9    #9 is the system code for service(sbrk) whoes work is        
+syscall     #to allocate dynamic memory
+
+move $t1 $zero
+move $t2 $v0
+
+loop:
+    bge $t1 $t0 end
+
+    # read in and store int
+    li $v0 5
+    syscall
+    sw $v0 0($t2)
+
+    addi $t1 $t1 1
+    addi $t2 $t2 4
+    j loop
+
+end:
+
+
+
+
+
+# CENTIPEDE	
+
+	move $t8, $zero 	# $t8: check collision
+	beq $t9, $zero, find_cmove_skip		# if direction east/west
+	beq $t7, $zero, find_cmove_skip_down	# if at edge
+	addi $v0, $t6, 256	# move down
+	li $v1, 2
+find_cmove_skip_down:
+	bne $t7, $zero, find_cmove_skip	# continue moving in same direction
+	li $t5, 1
+	bne $s4, $t5, find_cmove_skip_east # moving east
+	addi $v0, $t6, 4	# move right
+find_cmove_skip_east:
+	beq $s4, $t5, find_cmove_skip # moving west
+	addi $v0, $t6, -4
+find_cmove_skip:
+
+	bne $t9, $zero, find_cmove_end		# if direction north/south
+	beq $t7, $zero, find_cmove_skip_2	# if at edge
+	li $t5, 1
+	bne $t7, $t5, find_cmove_skip_east_2 # at left wall
+	addi $v0, $t6, 4	# move left
+	li $v1, 1
+find_cmove_skip_east_2:
+	beq $t7, $t5, find_cmove_skip_2 # at right wall
+	addi $v0, $t6, -4
+	li $v1, 3
+find_cmove_skip_2:
+	bne $t7, $zero, find_cmove_end # move in old direction
+	li $t5, 1
+	bne $s4, $t5, find_cmove_skip_east_3 # oldDirection is east
+	addi $v0, $t6, 4
+	li $v1, 1
+find_cmove_skip_east_3:
+	beq $s4, $t5, find_cmove_end # oldDirection is west
+	addi $v0, $t6, -4
+	li $v1, 3
+find_cmove_end:
+
+
+
+
